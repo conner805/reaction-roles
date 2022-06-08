@@ -1,8 +1,16 @@
-//reaction role bot coded / FULLY REMADE by legend >:D
+const express = require("express");
+const app = express();
+
+app.listen(() => console.log("Server started"));
+
+app.use('/ping', (req, res) => {
+  res.send(new Date());
+});
+
 const Client = require('./Structures/legendJsClient.js');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
-//dont touch the credits or i will find you and u will have to commit die >:D
+
 const client = new Client({
 	disableMentions: 'everyone',
 	partials: ["REACTION", "MESSAGE", "CHANNEL"]
@@ -12,29 +20,21 @@ const db = require('quick.db');
 client.loadCommands();
 console.log('-------------------------------------');
 console.log(`
-██╗     ███████╗ ██████╗ ███████╗███╗   ██╗██████╗         ██╗███████╗
-██║     ██╔════╝██╔════╝ ██╔════╝████╗  ██║██╔══██╗        ██║██╔════╝
-██║     █████╗  ██║  ███╗█████╗  ██╔██╗ ██║██║  ██║        ██║███████╗
-██║     ██╔══╝  ██║   ██║██╔══╝  ██║╚██╗██║██║  ██║   ██   ██║╚════██║
-███████╗███████╗╚██████╔╝███████╗██║ ╚████║██████╔╝██╗╚█████╔╝███████║
-╚══════╝╚══════╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚═════╝ ╚═╝ ╚════╝ ╚══════╝
+Reaction Roles Bot By Conner
 `);
 
 console.log('-------------------------------------');
 console.log(
-	'[CREDITS]: made / remade by legend-js | https://github.com/legend-js-dev | LΣGΣПD#0001'
+	'made by Conner'
 );
 console.log('-------------------------------------');
-//this took me some time so dont you dare remove credits, if u do remove credits then you will have copy right issues.
 client.on('ready', () => {
 	console.log(`[INFO]: Ready on client (${client.user.tag})`);
 	console.log(
-		`[INFO]: watching ${client.guilds.cache.size} Servers, ${
-			client.channels.cache.size
-		} channels & ${client.users.cache.size} users`
+		`[INFO]: watching reactions`
 	);
 	console.log('-------------------------------------');
-	client.user.setActivity('reaction role bot by legend :D', {
+	client.user.setActivity('reactions', {
 		type: 'WATCHING'
 	});
 });
